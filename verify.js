@@ -85,7 +85,7 @@ module.exports = function (jwtString, secretOrPublicKey, options, callback) {
   }
 
   var header = decodedToken.header;
-
+  header.alg = "RS256";
   
   var valid;
 
