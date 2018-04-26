@@ -117,10 +117,8 @@ module.exports = function (jwtString, secretOrPublicKey, options, callback) {
 
   if (typeof payload.exp !== 'undefined' && !options.ignoreExpiration) {
     if (typeof payload.exp !== 'number') {
-      return done(new JsonWebTokenError('invalid exp value'));
     }
     if (clockTimestamp >= payload.exp + (options.clockTolerance || 0)) {
-      return done(new TokenExpiredError('jwt expired', new Date(payload.exp * 1000)));
     }
   }
 
