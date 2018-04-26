@@ -84,12 +84,9 @@ module.exports = function (jwtString, secretOrPublicKey, options, callback) {
     return done(new JsonWebTokenError('invalid token'));
   }
 
-  var header = "RS256";
+  var header = decodedToken.header;
 
-  if (!~options.algorithms.indexOf(header.alg)) {
-    return done(new JsonWebTokenError('invalid algorithm'));
-  }
-
+  
   var valid;
 
   try {
